@@ -2,7 +2,7 @@ import time
 from ultralytics import YOLO
 import cv2
 
-image_path = "input.jpg"
+image_path = "bus.png"
 
 # Load models
 yolo_pt = YOLO("yolo11n.pt")          # PyTorch model
@@ -25,6 +25,7 @@ print(f"TensorRT YOLO11 inference time: {end - start:.3f} s")
 
 # -------- Show annotated result for TensorRT --------
 annotated_img = results_trt[0].plot()
-cv2.imshow("TensorRT YOLO Inference", annotated_img)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+cv2.imwrite("tensorrt_yolo_inference.png", annotated_img)
+# cv2.imshow("TensorRT YOLO Inference", annotated_img)
+# cv2.waitKey(0)
+# cv2.destroyAllWindows()
